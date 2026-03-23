@@ -14,10 +14,10 @@ func main() {
 		case 1:
 			normalWorkerPool()
 		case 2:
-			// superiorWorkerPool()
+			superiorWorkerPool()
 		case 3:
 			normalWorkerPool()
-			// superiorWorkerPool()
+			superiorWorkerPool()
 		default:
 			fmt.Println("Invalid choice")
 		}
