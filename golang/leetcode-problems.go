@@ -114,3 +114,18 @@ func twoSum(nums []int, target int) []int {
     }
     return nil
 }
+
+// using hash map, we can search in constant time - O(n)
+
+func twoSum(nums []int, target int) []int {
+    searchMap := make(map[int]int)
+    for idx, val := range nums{
+        key := target-val
+        if i, ok := searchMap[key]; ok {
+            return []int{i,idx}
+        }else{
+            searchMap[val] = idx
+        } 
+    }
+    return nil
+}
