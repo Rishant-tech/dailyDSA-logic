@@ -50,3 +50,20 @@ func majorityElement(nums []int) int {
     sort.Ints(nums)
     return nums[len(nums)/2]
 }
+
+//moore algo - do not reset the frequency just increase if mj matches to current indexed element in array - O(n)
+
+func majorityElement(nums []int) int {
+    freq, mj := 0,0
+    for i:=0; i<len(nums); i++{
+        if freq ==0{
+            mj = nums[i]
+        }
+        if (mj==nums[i]){
+            freq +=1
+        }else{
+            freq-=1
+        }
+    }
+    return mj
+}
