@@ -1,7 +1,7 @@
 /*majority num problem
 with floor value
 */
-//brute force - O(n2)
+//brute force - O(n2) - not accepted 
 
 func majorityElement(nums []int) int {
     var mj int
@@ -19,7 +19,7 @@ func majorityElement(nums []int) int {
     return mj
 }
 
-//optimize - with soring
+//optimize - with soring -- accepted 
 
 func majorityElement(nums []int) int {
     sort.Ints(nums)
@@ -41,4 +41,12 @@ func majorityElement(nums []int) int {
         }
     }
     return -1
+}
+
+
+// majority element will always exists >n/2, so center element will always the majority
+
+func majorityElement(nums []int) int {
+    sort.Ints(nums)
+    return nums[len(nums)/2]
 }
