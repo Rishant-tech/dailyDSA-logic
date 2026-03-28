@@ -73,7 +73,7 @@ func majorityElement(nums []int) int {
 Two Sum problem
 */
 
-//brute force
+//brute force - O(n2)
 
 func twoSum(nums []int, target int) []int {
     for i:=0 ; i<len(nums);i++{
@@ -81,6 +81,35 @@ func twoSum(nums []int, target int) []int {
             if nums[i]+nums[j] == target{
                 return []int{i,j}
             }
+        }
+    }
+    return nil
+}
+
+//using two pointer approach - need to preserve index so need to create a new Slice - O(nlogn)
+
+func twoSum(nums []int, target int) []int {
+    type org struct{
+        val, indx int
+    }
+    orgArr := make([]org, len(nums))
+    for i,v := range nums{
+        orgArr[i]= org{v, i}
+    }
+
+    sort.Slice(orgArr, func(i, j int) bool {
+        return orgArr[i].val < orgArr[j].val
+    })
+    //[2,7,11,15]
+    left,right := 0, len(orgArr)-1
+    for left<right{
+        sum := orgArr[left].val+orgArr[right].val
+        if sum==target {
+            return []int{orgArr[left].indx,orgArr[right].indx}
+        }else if sum < target{
+            left+=1
+        }else{
+            right-=1
         }
     }
     return nil
