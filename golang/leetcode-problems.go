@@ -1,3 +1,21 @@
+//stock buy and sell at low and max loss and profit respectively
+
+//DP style
+func maxProfit(prices []int) int {
+    n := len(prices)
+    dp := make([]int, n)
+    dp[0] = 0
+    minPrice := prices[0]
+
+    for i := 1; i < n; i++ {
+        dp[i] = max(dp[i-1], prices[i] - minPrice)
+        if prices[i] < minPrice {
+            minPrice = prices[i]
+        }
+    }
+    return dp[n-1]
+}
+
 //find single time occouring element from the array
 func singleNumber(nums []int) int {
     //use bitwise xor operator to find optima solution 
