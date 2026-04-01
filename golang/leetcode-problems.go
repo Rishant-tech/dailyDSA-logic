@@ -1,5 +1,24 @@
 //stock buy and sell at low and max loss and profit respectively
 
+func maxProfit(prices []int) int {
+    //declare variables to track min price and max profit
+    minPrice := prices[0]
+    maxProfit := 0
+
+    //traverse the array once
+    for i:=0; i<len(prices); i++{
+        if prices[i] < minPrice{
+            minPrice = prices[i]
+        }else{
+            profit := prices[i] - minPrice
+            if profit > maxProfit{
+                maxProfit = profit
+            }
+        }
+    }
+    return maxProfit
+}
+
 //DP style
 func maxProfit(prices []int) int {
     n := len(prices)
