@@ -1,3 +1,14 @@
+//find single time occouring element from the array
+func singleNumber(nums []int) int {
+    //use bitwise xor operator to find optima solution 
+    r := 0 //take result to calculate final answer
+    //traverse the array
+    for i:=0; i<=len(nums)-1; i++{
+        r ^=nums[i]
+    }
+    return r
+}
+
 //merge 2 arrays without extra space  - O(m+n)
 
 func merge(nums1 []int, m int, nums2 []int, n int)  {
