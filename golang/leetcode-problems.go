@@ -1,3 +1,31 @@
+//merge 2 arrays without extra space  - O(m+n)
+
+func merge(nums1 []int, m int, nums2 []int, n int)  {
+    //take len of nums1, nums2 and a third variable just suppose k
+    i := m-1 //as only m digits are valid in nums1
+    j := n-1
+    k := m+n-1
+
+    //traverse the array and assign elements 
+    for i>=0 && j>=0{
+        if nums1[i]>nums2[j]{
+            nums1[k] = nums1[i]
+            i--
+        }else{
+            nums1[k] = nums2[j]
+            j--
+        }
+        k--
+    }
+
+    //finally copy all items if any in nums2
+    for j>=0{
+        nums1[k] = nums2[j]
+        j--
+        k--
+    }
+}
+
 // find repeating and missing values
 
 func findMissingAndRepeatedValues(grid [][]int) []int {
