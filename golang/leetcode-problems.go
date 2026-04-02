@@ -1,7 +1,34 @@
 //power exponentiation
 
 func myPow(x float64, n int) float64 {
-    // negative power handle karo
+    //handle negative exponent 
+    if n<0{
+        x = 1/x
+        n = -n
+    }
+
+    //let keep 1 as a result because exponent will be 0 in case of min pow
+
+    result := 1.0
+    
+    //traverse exponent 'n' till greater then 0
+
+    for n>0{
+        //check for bit 1 using mod operator
+        if n%2 == 1{
+            //multiply number to result
+            result *= x
+        }
+        //sqaure the number and half the power to update n
+        x*=x
+        n/=2
+    }
+    return result
+}
+
+
+func myPow(x float64, n int) float64 {
+    // negative power handled
     if n < 0 {
         x = 1 / x
         n = -n
