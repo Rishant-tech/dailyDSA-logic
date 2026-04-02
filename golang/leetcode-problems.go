@@ -1,3 +1,19 @@
+//power exponentiation
+
+func myPow(x float64, n int) float64 {
+    // negative power handle karo
+    if n < 0 {
+        x = 1 / x
+        n = -n
+    }
+
+    result := 1.0
+    for i := 0; i < n; i++ {
+        result *= x
+    }
+    return result
+}
+
 //stock buy and sell at low and max loss and profit respectively
 
 func maxProfit(prices []int) int {
