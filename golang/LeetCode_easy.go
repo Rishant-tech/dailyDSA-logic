@@ -1,3 +1,24 @@
+func romanToInt(s string) int {
+    romanMap := map[byte]int{
+        'I': 1, 'V': 5, 'X': 10, 'L': 50,
+        'C': 100, 'D': 500, 'M': 1000,
+    }
+
+    result := 0
+
+    for i := 0; i < len(s); i++ {
+        curr := romanMap[s[i]]
+
+        if i+1 < len(s) && curr < romanMap[s[i+1]] {
+            result -= curr  
+        } else {
+            result += curr 
+        }
+    }
+
+    return result
+}
+
 func isPalindrome(x int) bool {
     //one method can be to conver this into a string and the back traverse the string finally compare each other
     
