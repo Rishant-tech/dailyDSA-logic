@@ -1,3 +1,25 @@
+func isPalindrome(x int) bool {
+    //one method can be to conver this into a string and the back traverse the string finally compare each other
+    
+    //if a number is negative then it can never be a palindrome so return at very first step
+    if x<0{
+        return false
+    }
+    reverseNum := 0
+
+    //keep trace of orignal number
+    orignalNum := x
+
+    //traverse on for loop condition until the actual number is greater then 0
+    for x >0 {
+        //we have to keep 2 conditions running - find remainder and remove last digit
+        reverseNum = reverseNum*10 + x%10
+        x = x/10
+    }
+    //compare and return the number
+    return reverseNum == orignalNum
+}
+
 func twoSum(nums []int, target int) []int {
     //method one can be - use, two loops and add each element and check with target, that will create an issue of high time complexity - O(n*n)
 
