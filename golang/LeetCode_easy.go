@@ -1,3 +1,14 @@
+func isValid(s string) bool {
+
+    //naive approach to replace the pairs with "" if there is a string pair found
+    for strings.Contains(s,"()") || strings.Contains(s,"{}") || strings.Contains(s,"[]"){
+        s = strings.ReplaceAll(s, "()", "")
+        s = strings.ReplaceAll(s, "[]", "")
+        s = strings.ReplaceAll(s, "{}", "")
+    }
+    return len(s) == 0
+}
+
 func longestCommonPrefix(strs []string) string {
     //return in case of empty string
     if len(strs) == 0{
