@@ -1,4 +1,39 @@
 func isValid(s string) bool {
+    //declare stack
+    stack := []rune{}
+
+    matchMap := map[rune]rune{
+        ')': '(',
+        ']': '[',
+        '}': '{',
+    }
+
+    for i:=0; i<len(s);i++{
+        char := rune(s[i])
+
+        //match with rune type not with str type, otherwise type case error will be there
+        if char == '(' || char == '{' || char == '['{
+            stack = append(stack , char)
+        }else{
+            if len(stack) == 0{
+                return false // as no open bracket seen so string is invalid
+            }
+            //extrack top elementa dn pop that from stack
+            top := stack[len(stack)-1]
+            stack = stack[:len(stack)-1] 
+
+            //if not matched in matched map, then it is invalid
+            if top != matchMap[char] {
+                return false
+            }
+
+
+        }
+    }
+    return len(stack)==0
+}
+
+func isValid(s string) bool {
 
     //naive approach to replace the pairs with "" if there is a string pair found
     for strings.Contains(s,"()") || strings.Contains(s,"{}") || strings.Contains(s,"[]"){
