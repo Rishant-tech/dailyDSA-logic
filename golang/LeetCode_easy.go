@@ -1,3 +1,25 @@
+func longestCommonPrefix(strs []string) string {
+    //return in case of empty string
+    if len(strs) == 0{
+        return ""
+    }
+
+    //lets try naive approach first
+    ans := ""
+
+    for i:=0; i<len(strs[0]);i++ {
+        //take first str of array and itrate over that
+        char := strs[0][i]
+        for j:=1; j<len(strs);j++{
+            if i>=len(strs[j]) || strs[j][i] != char{
+                return ans
+            }
+        }
+        ans += string(char)
+    }
+    return ans
+}
+
 func romanToInt(s string) int {
     romanMap := map[byte]int{
         'I': 1, 'V': 5, 'X': 10, 'L': 50,
