@@ -4,6 +4,35 @@ func longestCommonPrefix(strs []string) string {
         return ""
     }
 
+    ans := ""
+
+    //sort the string array and then compare first and last as strs b/w already sorted in order they contains common chars
+    sort.Strings(strs)
+    first := strs[0]
+    last := strs[len(strs)-1]
+
+    //there are 2 methods to traverse, first is to traverse with normal conditon and second one is to directly put all conditions and just increase i pointer, I will keep traversing with normal looping
+
+    for i:=0; i<len(first); i++{
+        //break the loop if index is greater then last string length - prevent out of bound
+        if i>=len(last){
+            break
+        }
+        if first[i]!=last[i]{
+            break
+        }
+        //add up char to answer
+        ans += string(first[i])
+    }
+    return ans
+}
+
+func longestCommonPrefix(strs []string) string {
+    //return in case of empty string
+    if len(strs) == 0{
+        return ""
+    }
+
     //lets try naive approach first
     ans := ""
 
