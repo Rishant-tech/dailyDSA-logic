@@ -1,3 +1,5 @@
+//add two numbers present in linked list, in reverse order and generate answer again in linked list
+
 func isValid(s string) bool {
     //declare stack
     stack := []rune{}
