@@ -1,4 +1,26 @@
-//add two numbers present in linked list, in reverse order and generate answer again in linked list
+//sliding window concept 
+
+// Template:
+func fixedWindow(arr []int, k int) {
+    windowSum := 0
+
+   //create first window of size k, given
+    for i := 0; i < k; i++ {
+        windowSum += arr[i]
+    }
+
+    result := windowSum
+
+   //now slice the window as per condition i.e, fixed or variable
+    for i := k; i < len(arr); i++ {
+        windowSum += arr[i]       // add new element (right)
+        windowSum -= arr[i-k]     // remove first element (left)
+        // result update 
+        if windowSum > result {
+            result = windowSum
+        }
+    }
+}
 
 func isValid(s string) bool {
     //declare stack
