@@ -1,4 +1,24 @@
 func lengthOfLongestSubstring(s string) int {
+    //sliding window - variable type
+
+    //declare required variables
+    seenMap := make(map[byte]int)
+    maxSize := 0
+    leftIdx := 0
+
+    for rightIdx:=0; rightIdx <len(s); rightIdx ++ {
+        if idx,ok:=seenMap[s[rightIdx]];ok&&idx>=leftIdx{
+            leftIdx = idx+1
+        }
+        seenMap[s[rightIdx]] = rightIdx
+        if lent := rightIdx - leftIdx +1 ; lent> maxSize {
+            maxSize = lent
+        }
+    }
+    return maxSize
+}
+
+func lengthOfLongestSubstring(s string) int {
 
     //lets try it with brute force
     maxSize := 0 
