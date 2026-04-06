@@ -1,3 +1,26 @@
+func lengthOfLongestSubstring(s string) int {
+
+    //lets try it with brute force
+    maxSize := 0 
+    for i:=0; i<len(s);i++{
+        //declare a map to keep track of seen elements
+        seenMap := make(map[byte]bool)//, len(s))
+        
+        //two loops because we have to trace longest non repeating
+        for j := i; j < len(s); j++ {
+            if _,ok:= seenMap[s[j]];ok{
+                break
+            }
+            seenMap[s[j]] = true
+
+            if len(seenMap) > maxSize{
+                maxSize = len(seenMap)
+            }
+        }
+    }
+    return maxSize
+}
+
 //sliding window concept 
 
 // Template:
