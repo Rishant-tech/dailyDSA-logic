@@ -1,3 +1,21 @@
+func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+
+    //lets try it with bruet force - first merge these arrays and then sort
+
+    mergedArr := append(nums1, nums2...)
+    sort.Ints(mergedArr)
+
+    n := len(mergedArr)
+
+    //check for odd and even condition to find the median
+
+    if n%2==1{
+        return float64(mergedArr[n/2])
+    }else{
+        return float64(mergedArr[n/2-1]+mergedArr[n/2])/2.0
+    }
+}
+
 func lengthOfLongestSubstring(s string) int {
     //sliding window - variable type
 
