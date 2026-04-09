@@ -1,5 +1,37 @@
 func longestPalindrome(s string) string {
     n := len(s)
+    start, maxLen := 0, 1
+
+   
+    for i := 0; i < n; i++ {
+        // Case 1 — odd length "aba"
+        l, r := expand(s, i, i)
+        if r-l+1 > maxLen {
+            start = l
+            maxLen = r - l + 1
+        }
+
+        // Case 2 — even length "bb"
+        l, r = expand(s, i, i+1)
+        if r-l+1 > maxLen {
+            start = l
+            maxLen = r - l + 1
+        }
+    }
+    return s[start : start+maxLen]
+}
+
+func expand(s string, left, right int) (int, int) {
+    for left >= 0 && right < len(s) && s[left] == s[right] {
+        left--
+        right++
+    }
+
+    return left+1, right-1
+}
+
+func longestPalindrome(s string) string {
+    n := len(s)
     result := string(s[0])
 
     for i := 0; i < n; i++ {
