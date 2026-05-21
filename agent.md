@@ -1,20 +1,15 @@
-# AI Agents
+# Agent Notes
 
-**Definition:** AI agents are software entities that perceive their environment through sensors and act upon that environment through actuators, often using machine learning to improve their performance over time.
+This repository is maintained with AI assistance, so a few conventions help keep commits and reviews consistent.
 
-## Components of AI Agents:
-1. **Perception:** Ability to interpret data from the environment.
-2. **Decision-Making:** Capable of making choices based on the perception and learned experiences.
-3. **Action:** Execute actions that affect the environment to achieve goals.
+## Working Rules
+- Keep changes focused and avoid unrelated edits.
+- Preserve existing user work unless explicitly asked to modify it.
+- Prefer clear commit messages and small reviewable PRs.
 
-## Types of AI Agents:
-- **Reactive Agents:** Respond to current inputs with no memory of the past.
-- **Deliberative Agents:** Maintain an internal state to make informed decisions over time.
-- **Learning Agents:** Improve their performance based on experiences.
+## Commit Rule
+- When creating a commit, include this trailer in the commit body:
+  `Co-authored-by: Codex <codex@openai.com>`
 
-## Applications:
-- **Robotics:** Navigating through spaces and interacting with objects.
-- **Virtual Assistants:** Automating tasks based on user commands.
-- **Game AI:** Adapting strategies in real-time based on player actions.
-
-In summary, AI agents are integral in automating processes, enhancing user experience, and performing complex tasks with minimal human intervention.
+## Branching
+- Use a feature branch for PRs when the change should be reviewed separately from `main`.
