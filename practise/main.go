@@ -25,12 +25,16 @@ func main() {
 
 	arr := []int{0,1,0,2,1,0,1,3,2,1,2,1}
 
-	waterTrapped := trapRainWater(arr)
+	waterTrapped := trapRainWaterBrute(arr)
+
+	fmt.Println("Total water trapped:", waterTrapped)
+
+	waterTrapped = trapRainWaterOptimalTwoPointer(arr)
 
 	fmt.Println("Total water trapped:", waterTrapped)
 }
 
-func trapRainWater(arr []int) int {
+func trapRainWaterBrute(arr []int) int {
 
 	totalWater := 0
 
@@ -69,4 +73,36 @@ func minValue(a,b int) int {
 	}
 
 	return b
+}
+
+func trapRainWaterOptimalTwoPointer(arr []int) int {
+
+	l,r := 0,len(arr)-1
+	lmax, rmax, totalWater := 0,0,0
+
+	for l<r {
+		fmt.Printf("value %d , %d \n",l,r)
+
+		if arr[l] < arr[r]{
+			if arr[l] >= lmax {
+				lmax = arr[l]
+			}else{
+				totalWater = totalWater+lmax-arr[l]
+			}
+			l++
+		}else{
+			if arr[r]>=rmax{
+				rmax = arr[r]
+			}else{
+				totalWater = totalWater + rmax -arr[r]
+			}
+			r--
+		}
+	}
+
+	fmt.Printf("l : %d, r: %d : \n", lmax, rmax)
+
+	fmt.Println("values : ", arr)
+
+	return totalWater
 }
