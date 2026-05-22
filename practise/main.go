@@ -107,6 +107,7 @@ func trapRainWaterOptimalTwoPointer(arr []int) int {
 	return totalWater
 }
 
+//frequency of number in sorted array
 func main () {
 	arr := []int{1,2,3,3,4,4,5,5,6,6,7,8,9}
 	var n int
@@ -115,12 +116,16 @@ func main () {
 
 	fmt.Scan(&n)
 
-	frequency := findFrequency(arr,n)
+	frequency := findFrequencyBrute(arr,n)
+
+	fmt.Printf("Frequency of the number %d, is : %d\n",n,frequency)
+
+	frequency = findFrequencyBinarySearch(arr,n)
 
 	fmt.Printf("Frequency of the number %d, is : %d\n",n,frequency)
 }
 
-func findFrequency(arr []int, num int) int {
+func findFrequencyBrute(arr []int, num int) int {
 	freq := 0
 
 	for i :=0; i<len(arr); i++{
@@ -129,4 +134,61 @@ func findFrequency(arr []int, num int) int {
 		}
 	}
 	return freq
+}
+
+func findFrequencyBinarySearch(arr []int, num int) int {
+	firstIndex := findFirstOccurrence(arr, num)
+	lastIndex := findLastOccurrence(arr, num)
+	var frequency int
+
+	if firstIndex == -1 {
+		fmt.Printf("The number %d does not exist in the array.\n", num)
+	} else {
+		frequency := lastIndex - firstIndex + 1
+		fmt.Printf("Frequency of the number %d is: %d\n", num, frequency)
+	}
+
+	return frequency
+}
+
+func findFirstOccurrence(arr []int, num int) int{
+	left, right := 0, len(arr)-1
+	result := -1
+
+	for left <=right {
+
+		mid := left+(right-left)/2
+		if arr[mid] == num {
+			result = mid
+			right = mid -1 
+		}else if arr[mid] < num {
+			left = mid+1
+		}else {
+			right = mid -1
+		}
+
+	}
+
+	return result
+}
+
+func findLastOccurrence(arr []int, num int) int{
+	left, right := 0, len(arr)-1
+	result := -1
+
+	for left <= right{
+		mid := left + (right-left)/2
+
+		if arr[mid] == num{
+			result = mid
+			left = mid + 1
+		}else if arr[mid]<num{
+			left = mid+1
+		}else{
+			right = mid - 1
+		}
+
+	}
+
+	return result
 }
