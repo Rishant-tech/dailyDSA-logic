@@ -1,0 +1,21 @@
+{
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "github.copilot.inlineSuggest.enable": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "never"
+    },
+    "javascript.suggest.autoImports": false,
+    "typescript.suggest.autoImports": false,
+    "[go]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "never"
+        },
+        "editor.formatOnSave": false
+    }
+}
