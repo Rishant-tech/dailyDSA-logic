@@ -263,7 +263,7 @@ func main() {
 	var num int
 	fmt.Print("Hello Please enter the value to find frequency : ")
 	fmt.Scan(&num)
-	freq := findFrequencyBrutee(arr,num)
+	freq := findFrequencyBinary(arr,num)
 
 	fmt.Printf("The frequncy of number %d , is exists %d times\n", num, freq)
 }
@@ -280,4 +280,56 @@ func findFrequencyBrutee(arr []int, num int) int {
 		}
 	}
 	return freq
+}
+
+//optimal using binary search
+func findFrequencyBinary(arr []int, num int) int{
+	//use binary search to find frequency with formula of left-right+1
+
+	first,last, result := 0,0,0
+
+	first = findFirst(arr, num)
+	last = findLast(arr, num)
+
+	result = last - first +1 
+	return result
+}
+
+func findFirst(arr []int, num int) int {
+	left, right := 0, len(arr)-1
+	result := -1
+
+	for left <= right {
+		mid := left + (right- left)/2
+		if arr[mid] == num {
+			result = mid
+			right = mid -1
+		}else if arr[mid] < num {
+			left = mid +1 
+		}else{
+			right = mid - 1
+		}
+	}
+
+	return result
+}
+
+func findLast(arr []int, num int) int {
+	left, right := 0, len(arr)-1
+	result := -1
+
+	for left <= right {
+		mid := left + (right- left)/2
+		if arr[mid] == num {
+			result = mid
+			left  = mid +1
+		}else if arr[mid] < num {
+			left = mid + 1
+		}else{
+			right = mid -1
+		}
+	}
+
+
+	return result
 }
