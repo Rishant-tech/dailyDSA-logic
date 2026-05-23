@@ -21,18 +21,18 @@ Google expects the two-pointer approach with clear explanation of invariant
 
 import "fmt"
 
-// func main() {
+func main() {
 
-// 	arr := []int{0,1,0,2,1,0,1,3,2,1,2,1}
+	arr := []int{0,1,0,2,1,0,1,3,2,1,2,1}
 
-// 	waterTrapped := trapRainWaterBrute(arr)
+	waterTrapped := trap(arr)
 
-// 	fmt.Println("Total water trapped:", waterTrapped)
+	fmt.Println("Total water trapped:", waterTrapped)
 
-// 	waterTrapped = trapRainWaterOptimalTwoPointer(arr)
+	// waterTrapped = trapRainWaterOptimalTwoPointer(arr)
 
-// 	fmt.Println("Total water trapped:", waterTrapped)
-// }
+	// fmt.Println("Total water trapped:", waterTrapped)
+}
 
 func trapRainWaterBrute(arr []int) int {
 
@@ -108,22 +108,22 @@ func trapRainWaterOptimalTwoPointer(arr []int) int {
 }
 
 //frequency of number in sorted array
-func main () {
-	arr := []int{1,2,3,3,4,4,5,5,6,6,7,8,9}
-	var n int
+// func main () {
+// 	arr := []int{1,2,3,3,4,4,5,5,6,6,7,8,9}
+// 	var n int
 
-	fmt.Println("Enter the number you want to find frequency for : ")
+// 	fmt.Println("Enter the number you want to find frequency for : ")
 
-	fmt.Scan(&n)
+// 	fmt.Scan(&n)
 
-	frequency := findFrequencyBrute(arr,n)
+// 	frequency := findFrequencyBrute(arr,n)
 
-	fmt.Printf("Frequency of the number %d, is : %d\n",n,frequency)
+// 	fmt.Printf("Frequency of the number %d, is : %d\n",n,frequency)
 
-	frequency = findFrequencyBinarySearch(arr,n)
+// 	frequency = findFrequencyBinarySearch(arr,n)
 
-	fmt.Printf("Frequency of the number %d, is : %d\n",n,frequency)
-}
+// 	fmt.Printf("Frequency of the number %d, is : %d\n",n,frequency)
+// }
 
 func findFrequencyBrute(arr []int, num int) int {
 	freq := 0
@@ -191,4 +191,38 @@ func findLastOccurrence(arr []int, num int) int{
 	}
 
 	return result
+}
+
+func trap(arr []int) int{
+	//brute force method
+	totalWater := 0
+
+	for i := 0; i <= len(arr)-1; i++ {
+		lMax, rMax := 0,0
+
+		for j:=0; j<i;j++ {
+			if arr[j] > lMax {
+				lMax = arr[j]
+			}
+		}
+
+		for j:=i; j<len(arr); j++ {
+			if arr[j] > rMax{
+				rMax = arr[j]
+			}
+		}
+		water := minWater(lMax, rMax)-arr[i]
+		if water>0{
+			totalWater+=water
+		}
+	}
+
+	return totalWater
+}
+
+func minWater(a,b int) int{
+	if a<b {
+		return a
+	}
+	return b
 }
