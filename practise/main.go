@@ -377,7 +377,7 @@ Output: 3
 */
 
 func main() {
-	arr := []int{3,4,-1,1}
+	arr := []int{3,4,-1,11}
 
 	num := firstMissingPositive(arr)
 	if num != -1{
@@ -400,5 +400,5 @@ func firstMissingPositive(arr []int) int{
 			return i
 		}
 	}
-	return -1
+	return len(arr) +1
 }
