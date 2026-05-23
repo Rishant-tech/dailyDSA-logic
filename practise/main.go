@@ -21,18 +21,18 @@ Google expects the two-pointer approach with clear explanation of invariant
 
 import "fmt"
 
-func main() {
+// func main() {
 
-	arr := []int{0,1,0,2,1,0,1,3,2,1,2,1}
+// 	arr := []int{0,1,0,2,1,0,1,3,2,1,2,1}
 
-	waterTrapped := trapoptimized(arr)
+// 	waterTrapped := trapoptimized(arr)
 
-	fmt.Println("Total water trapped:", waterTrapped)
+// 	fmt.Println("Total water trapped:", waterTrapped)
 
-	// waterTrapped = trapRainWaterOptimalTwoPointer(arr)
+// 	// waterTrapped = trapRainWaterOptimalTwoPointer(arr)
 
-	// fmt.Println("Total water trapped:", waterTrapped)
-}
+// 	// fmt.Println("Total water trapped:", waterTrapped)
+// }
 
 func trapRainWaterBrute(arr []int) int {
 
@@ -254,4 +254,30 @@ func trapoptimized(arr []int) int {
 	}
 
 	return totalWater 
+}
+
+
+
+func main() {
+	arr := []int{1,2,2,3,3,4,4,4,4,5,5,6,7,8,9,9,9,9}
+	var num int
+	fmt.Print("Hello Please enter the value to find frequency : ")
+	fmt.Scan(&num)
+	freq := findFrequencyBrutee(arr,num)
+
+	fmt.Printf("The frequncy of number %d , is exists %d times\n", num, freq)
+}
+
+//brute force
+func findFrequencyBrutee(arr []int, num int) int {
+	freq := 0
+
+	//do linear scan
+
+	for i:=0 ; i<len(arr) ; i++ {
+		if arr[i] == num{
+			freq++
+		}
+	}
+	return freq
 }
