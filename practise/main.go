@@ -376,14 +376,14 @@ Output: 3
 
 */
 
-func main() {
-	arr := []int{3,4,-1,1}
+// func main() {
+// 	arr := []int{3,4,-1,1}
 
-	num := firstMissingPositiveOp(arr)
-	if num != -1{
-		fmt.Printf("Missing integer : %d\n", num)
-	}
-}
+// 	num := firstMissingPositiveOp(arr)
+// 	if num != -1{
+// 		fmt.Printf("Missing integer : %d\n", num)
+// 	}
+// }
 
 //brute force method
 func firstMissingPositive(arr []int) int{
@@ -429,4 +429,32 @@ func firstMissingPositiveOp(arr []int) int {
 	return lenth+1
 
 	
+}
+
+func largestRectangleArea(heights []int) int {
+    area := 0
+    for i := 0 ; i < len(heights); i++ {
+        currentArea := heights[i] * width(heights, i)
+        area = max(area, currentArea)
+    }
+    return area
+}
+
+func width(arr []int,i int) int {
+    result := 1
+
+    for j:=i; j>0 ; j-- {
+        if arr[i] > arr[j-1]{
+            break
+        }
+        result++
+    }
+
+    for j:= i; j<len(arr)-1; j++{
+        if arr[i] > arr[j+1]{
+            break
+        }
+        result++
+    }
+    return result
 }
