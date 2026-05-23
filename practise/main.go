@@ -25,7 +25,7 @@ func main() {
 
 	arr := []int{0,1,0,2,1,0,1,3,2,1,2,1}
 
-	waterTrapped := trap(arr)
+	waterTrapped := trapoptimized(arr)
 
 	fmt.Println("Total water trapped:", waterTrapped)
 
@@ -225,4 +225,33 @@ func minWater(a,b int) int{
 		return a
 	}
 	return b
+}
+
+
+func trapoptimized(arr []int) int {
+	lMax, rMax,totalWater := 0,0,0
+
+	l,r := 0, len(arr)-1
+
+	for l<r {
+
+		if arr[l]<arr[r] {
+			if arr[l] > lMax {
+				lMax = arr[l]
+			}else{
+				totalWater += lMax - arr[l]
+			}
+			l++
+		}else {
+			if arr[r] > rMax{
+				rMax = arr[r]
+			}else {
+				totalWater += rMax - arr[r]
+			}
+			r--
+		}
+
+	}
+
+	return totalWater 
 }
