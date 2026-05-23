@@ -336,21 +336,21 @@ func findLast(arr []int, num int) int {
 
 
 
-func main() {
-	//frequency in unsorted array
-	arr := []int{1,3,2,4,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,7}
-	var num int
-	fmt.Print("Enter the number to find frequency in the given array : ")
-	fmt.Scan(&num)
+// func main() {
+// 	//frequency in unsorted array
+// 	arr := []int{1,3,2,4,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,7}
+// 	var num int
+// 	fmt.Print("Enter the number to find frequency in the given array : ")
+// 	fmt.Scan(&num)
 
-	freq := findFrequency(arr, num)
+// 	freq := findFrequency(arr, num)
 
-	if freq == -1{
-		fmt.Printf("Freq for num %d, not exists\n", num)
-	}else{
-		fmt.Printf("Freq for num %d, is exists %d times\n", num, freq)
-	}
-}
+// 	if freq == -1{
+// 		fmt.Printf("Freq for num %d, not exists\n", num)
+// 	}else{
+// 		fmt.Printf("Freq for num %d, is exists %d times\n", num, freq)
+// 	}
+// }
 
 func findFrequency(arr []int, num int) int {
 	//one option is to linear scan the arrya in this case too for unsorted array
@@ -360,4 +360,45 @@ func findFrequency(arr []int, num int) int {
 
 
 	return result
+}
+
+/*
+PROBLEM DESCRIPTION
+
+Given an unsorted integer array nums, return the smallest missing positive integer. Must run in O(n) time and use O(1) auxiliary space.
+EXAMPLE
+
+Input:  nums = [3,4,-1,1]
+Output: 2
+
+Input:  nums = [1,2,0]
+Output: 3
+
+*/
+
+func main() {
+	arr := []int{3,4,-1,1}
+
+	num := firstMissingPositive(arr)
+	if num != -1{
+		fmt.Printf("Missing integer : %d\n", num)
+	}
+}
+
+//brute force method
+func firstMissingPositive(arr []int) int{
+	numMap := make(map[int]bool, len(arr))
+
+	for i:= 0; i< len(arr); i++ {
+		if arr[i] > 0{
+			numMap[arr[i]] = true
+		}
+	}
+
+	for i:=1; i<=len(arr);i++{
+		if !numMap[i] {
+			return i
+		}
+	}
+	return -1
 }
