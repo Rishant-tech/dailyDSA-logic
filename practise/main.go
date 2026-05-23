@@ -377,9 +377,9 @@ Output: 3
 */
 
 func main() {
-	arr := []int{3,4,-1,11}
+	arr := []int{3,4,-1,1}
 
-	num := firstMissingPositive(arr)
+	num := firstMissingPositiveOp(arr)
 	if num != -1{
 		fmt.Printf("Missing integer : %d\n", num)
 	}
@@ -401,4 +401,32 @@ func firstMissingPositive(arr []int) int{
 		}
 	}
 	return len(arr) +1
+}
+
+func firstMissingPositiveOp(arr []int) int {
+	//should not use map to reduce auxillary space to o(1) and time complexity o(n)
+	// so just use array as a hash table and fix the indexex
+
+	lenth := len(arr)
+
+	for i:=0;i<lenth;i++{
+		for arr[i] > 0 &&
+		arr[i] <= lenth && 
+		arr[i] != arr[arr[i]-1] {
+			correctIndex := arr[i] -1
+
+			arr[i],arr[correctIndex] = arr[correctIndex],arr[i]
+		}
+	}
+
+
+	for i:=0; i<lenth; i++{
+		if arr[i] != i+1 {
+			return i+1
+		}
+	}
+
+	return lenth+1
+
+	
 }
