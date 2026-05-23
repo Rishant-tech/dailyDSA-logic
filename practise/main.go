@@ -258,15 +258,15 @@ func trapoptimized(arr []int) int {
 
 
 
-func main() {
-	arr := []int{1,2,2,3,3,4,4,4,4,5,5,6,7,8,9,9,9,9}
-	var num int
-	fmt.Print("Hello Please enter the value to find frequency : ")
-	fmt.Scan(&num)
-	freq := findFrequencyBinary(arr,num)
+// func main() {
+// 	arr := []int{1,2,2,3,3,4,4,4,4,5,5,6,7,8,9,9,9,9}
+// 	var num int
+// 	fmt.Print("Hello Please enter the value to find frequency : ")
+// 	fmt.Scan(&num)
+// 	freq := findFrequencyBinary(arr,num)
 
-	fmt.Printf("The frequncy of number %d , is exists %d times\n", num, freq)
-}
+// 	fmt.Printf("The frequncy of number %d , is exists %d times\n", num, freq)
+// }
 
 //brute force
 func findFrequencyBrutee(arr []int, num int) int {
@@ -329,6 +329,34 @@ func findLast(arr []int, num int) int {
 			right = mid -1
 		}
 	}
+
+
+	return result
+}
+
+
+
+func main() {
+	//frequency in unsorted array
+	arr := []int{1,3,2,4,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,5,6,7}
+	var num int
+	fmt.Print("Enter the number to find frequency in the given array : ")
+	fmt.Scan(&num)
+
+	freq := findFrequency(arr, num)
+
+	if freq == -1{
+		fmt.Printf("Freq for num %d, not exists\n", num)
+	}else{
+		fmt.Printf("Freq for num %d, is exists %d times\n", num, freq)
+	}
+}
+
+func findFrequency(arr []int, num int) int {
+	//one option is to linear scan the arrya in this case too for unsorted array
+
+	//other way is to sort and apply binary search on this array
+	result := -1
 
 
 	return result
