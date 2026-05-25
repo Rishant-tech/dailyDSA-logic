@@ -458,3 +458,50 @@ func width(arr []int,i int) int {
     }
     return result
 }
+
+func main() {
+	array := []int{1,2,3,4,1,5}
+	num := 5
+
+	subArrayCount := countSubArray(array, num)
+	
+	fmt.Printf("Count of sub arrays present : %d\n",subArrayCount)
+}
+
+func countSubArray(arr []int, num int) int {
+	count := 0
+
+	for i:=0; i<len(arr); i++ {
+		sum := 0
+		for j:=i; j<len(arr);j++ {
+			sum = sum + arr[j]
+			if sum == num {
+				count++
+			}
+		} 
+	}
+
+	return count
+}
+
+func subarraySum(arr []int, k int) int {
+    prefixMap := make(map[int]int)
+
+	prefixMap[0] = 1
+
+	currSum := 0
+	count := 0
+
+	for _, num := range arr {
+
+		currSum += num
+
+		if freq, exists := prefixMap[currSum-k]; exists {
+			count += freq
+		}
+
+		prefixMap[currSum]++
+	}
+
+	return count
+}
