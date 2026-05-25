@@ -459,14 +459,14 @@ func width(arr []int,i int) int {
     return result
 }
 
-func main() {
-	array := []int{1,2,3,4,1,5}
-	num := 5
+// func main() {
+// 	array := []int{1,2,3,4,1,5}
+// 	num := 5
 
-	subArrayCount := countSubArray(array, num)
+// 	subArrayCount := countSubArray(array, num)
 	
-	fmt.Printf("Count of sub arrays present : %d\n",subArrayCount)
-}
+// 	fmt.Printf("Count of sub arrays present : %d\n",subArrayCount)
+// }
 
 func countSubArray(arr []int, num int) int {
 	count := 0
@@ -504,4 +504,50 @@ func subarraySum(arr []int, k int) int {
 	}
 
 	return count
+}
+
+
+func main() {
+	array := []int{1,2,5,4,1,5}
+
+	subArrayCount := longestConsecutive(array)
+	
+	fmt.Printf("Length of longest consecutive arrays present : %d\n",subArrayCount)
+}
+
+
+func longestConsecutive(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+
+	maxLen := 1
+
+	for i := 0; i < len(nums); i++ {
+		current := nums[i]
+		count := 1
+
+		for {
+			found := false
+
+			for j := 0; j < len(nums); j++ {
+				if current+1 == nums[j] {
+					current = nums[j] // move ahead
+					count++
+					found = true
+					break
+				}
+			}
+
+			if !found {
+				break
+			}
+		}
+
+		if count > maxLen {
+			maxLen = count
+		}
+	}
+
+	return maxLen
 }
